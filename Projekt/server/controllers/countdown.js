@@ -1,0 +1,1 @@
+const getAllCountDowns = (req, res) => {}
