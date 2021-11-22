@@ -6,8 +6,6 @@ const jwt = require('jsonwebtoken')
 const register = asyncWrapper(async (req, res) => {
   const { email, password: plainTextPassword, name } = await req.body
 
-  // var validation && errors
-
   const password = await bcrypt.hash(plainTextPassword, 10)
   try {
     const response = await User.create({
@@ -21,10 +19,10 @@ const register = asyncWrapper(async (req, res) => {
       // duplicate key
       return res.json({ status: 'error', error: 'Email already in use' })
     }
+
     throw error
   }
-
-  res.json({ status: 'ok' })
+  res.json({ status: 'ok', message: 'You have been registered successfully' })
 })
 
 const login = asyncWrapper(async (req, res) => {
