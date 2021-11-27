@@ -8,7 +8,6 @@ async function createUser(email, password, name) {
     password,
     name,
   })
-  console.log('User created successfully: ', response)
 }
 
 async function findUser(email) {
