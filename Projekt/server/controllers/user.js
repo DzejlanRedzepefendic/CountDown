@@ -8,6 +8,7 @@ const {
   findUser,
   verifyToken,
 } = require('../services/user')
+
 const register = asyncWrapper(async (req, res) => {
   const { email, password: plainTextPassword, name } = await req.body
 
@@ -16,7 +17,6 @@ const register = asyncWrapper(async (req, res) => {
     await createUser(email, password, name)
   } catch (error) {
     if (error.code === 11000) {
-      // duplicate key
       return res.json({ status: 'error', error: 'Email already in use' })
     }
 
