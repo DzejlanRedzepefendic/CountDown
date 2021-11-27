@@ -24,21 +24,9 @@ async function compareHash(password1, password2) {
   return await bcrypt.compare(password1, password2)
 }
 
-async function createToken(userID, userName) {
-  return jwt.sign(
-    { id: userID, name: userName },
-    process.env.ACCESS_TOKEN_SECRET
-  )
-}
-
-async function verifyToken(token) {
-  return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-}
 module.exports = {
   createUser,
   findUser,
   hashPassword,
   compareHash,
-  createToken,
-  verifyToken,
 }

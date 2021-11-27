@@ -1,18 +1,17 @@
 const asyncWrapper = require('../middlewares/async')
-const { createCustomError } = require('../errors/custom-error')
 const {
   hashPassword,
   createUser,
   compareHash,
-  createToken,
   findUser,
-  verifyToken,
 } = require('../services/user')
+
+const { verifyToken, createAccessToken } = require('../services/session')
 
 const register = asyncWrapper(async (req, res) => {
   const { email, password: plainTextPassword, name } = await req.body
-
   const password = await hashPassword(plainTextPassword)
+
   try {
     await createUser(email, password, name)
   } catch (error) {
@@ -28,20 +27,24 @@ const register = asyncWrapper(async (req, res) => {
 const login = asyncWrapper(async (req, res) => {
   const { email, password } = await req.body
   const user = await findUser(email)
+
   if (!user) {
     return res.json({ status: 'error', error: 'Invalid username/password' })
   }
 
   if (await compareHash(password, user.password)) {
-    const token = await createToken(user._id, user.name)
+    const token = await createAccessToken(user._id, user.name)
     return res.json({ status: 'ok', data: token })
   }
   res.json({ status: 'error', error: 'Invalid username/password' })
 })
 
-const changePassword = asyncWrapper(async (req, res) => {
+const logout = asyncWrapper(async (req, res) => {
   const { token } = await req.body
   const user = await verifyToken(token)
+  if (!user) {
+    res.status(401).json({ error: '' })
+  }
 })
 
-module.exports = { register, login, changePassword }
+module.exports = { register, login, logout }
