@@ -10,6 +10,7 @@ const app = express()
 app.use(express.json())
 app.use('/api/register', register)
 app.use('/api/login', login)
+
 app.use('/ping', (req, res) => {
   res.send('Pong')
 })
