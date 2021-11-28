@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-const sessionScheme = new Scheme(
+const sessionScheme = new Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     valid: { type: Boolean, default: true },
