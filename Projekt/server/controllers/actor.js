@@ -26,16 +26,14 @@ const createActor = asyncWrapper(async (req, res) => {
   } catch (error) {
     res.status(500).json({ error })
   }
-  res
-    .status(201)
-    .json({ message: 'resource created successfully', createActor })
+  res.status(201).json({ message: 'actor created successfully', createActor })
 })
 
 const getActor = asyncWrapper(async (req, res) => {
-  const { id: productID } = req.params
+  const { id: actorID } = req.params
   let actor
   try {
-    actor = await findOneActor(productID)
+    actor = await findOneActor(actorID)
   } catch (error) {
     return res.status(404).json({ error: 'Invalid id params' })
   }
@@ -43,26 +41,27 @@ const getActor = asyncWrapper(async (req, res) => {
 })
 
 const updateActor = asyncWrapper(async (req, res) => {
-  const { id: productID } = req.params
+  const { id: actorID } = req.params
   let actor
   try {
-    actor = await findAndUpdateActor(productID, req.body)
+    actor = await findAndUpdateActor(actorID, req.body)
   } catch (error) {
+    console.log(error)
     return res.status(404).json({ error: 'Invalid id params' })
   }
-  res.status(204).json({ message: 'resource updated successfully', actor })
+  res.status(200).json({ message: 'actor updated successfully', actor })
 })
 
 const deleteActor = asyncWrapper(async (req, res) => {
-  const { id: productID } = req.params
+  const { id: actorID } = req.params
   let actor
   try {
-    actor = await findAndDeleteActor(productID)
+    actor = await findAndDeleteActor(actorID)
   } catch (error) {
     return res.status(404).json({ error: 'Invalid id params' })
   }
-  res.status(204).json({
-    message: `Actor ID:${productID} deleted successfully`,
+  res.status(200).json({
+    message: `Actor ID:${actorID} deleted successfully`,
     data: actor,
   })
 })

@@ -1,31 +1,29 @@
 const Actor = require('../models/actor')
-
+const {
+  findAll,
+  create,
+  findOne,
+  findAndUpdate,
+  findAndDelete,
+} = require('../utils/db/dbcrud')
 async function findAllActors() {
-  const actors = await Actor.find({})
-  return actors
+  return findAll(Actor)
 }
 
 async function createAnActor(actor) {
-  const create = Actor.create(actor)
-  return create
+  return create(Actor, actor)
 }
 
 async function findOneActor(id) {
-  const findOne = Actor.findOne({ _id: id })
-  return findOne
+  return findOne(Actor, id)
 }
 
 async function findAndUpdateActor(id, updatedActor) {
-  const findAndUpdate = Actor.findOneAndUpdate({ _id: id }, updatedActor, {
-    new: true,
-    runValidators: true,
-  })
-  return findAndUpdate
+  return findAndUpdate(Actor, id, updatedActor)
 }
 
 async function findAndDeleteActor(id) {
-  const findAndDelete = Actor.findOneAndDelete({ _id: id })
-  return findAndDelete
+  return findAndDelete(Actor, id)
 }
 
 module.exports = {
