@@ -26,7 +26,9 @@ const createActor = asyncWrapper(async (req, res) => {
   } catch (error) {
     res.status(500).json({ error })
   }
-  res.status(201).json({ createActor })
+  res
+    .status(201)
+    .json({ message: 'resource created successfully', createActor })
 })
 
 const getActor = asyncWrapper(async (req, res) => {
@@ -48,7 +50,7 @@ const updateActor = asyncWrapper(async (req, res) => {
   } catch (error) {
     return res.status(404).json({ error: 'Invalid id params' })
   }
-  res.status(200).json({ actor })
+  res.status(204).json({ message: 'resource updated successfully', actor })
 })
 
 const deleteActor = asyncWrapper(async (req, res) => {
@@ -59,7 +61,10 @@ const deleteActor = asyncWrapper(async (req, res) => {
   } catch (error) {
     return res.status(404).json({ error: 'Invalid id params' })
   }
-  res.status(200).json({ message: `actor ${productID} deleted`, data: actor })
+  res.status(204).json({
+    message: `Actor ID:${productID} deleted successfully`,
+    data: actor,
+  })
 })
 
 module.exports = {
