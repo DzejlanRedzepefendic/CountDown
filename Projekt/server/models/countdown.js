@@ -13,7 +13,13 @@ const countDownSchema = new Schema(
     updated_at: { type: Date, default: Date.now },
     updated: { type: Date, default: Date.now },
   },
-  { collection: 'countdown' }
+  {
+    collection: 'countdown',
+    writeConcern: {
+      j: true,
+      wtimeout: 1000,
+    },
+  }
 )
 
-module.exports = mongoose.model('CountDown', countDownSchema)
+module.exports = mongoose.model('Countdown', countDownSchema)
