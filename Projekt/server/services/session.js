@@ -1,4 +1,5 @@
 const Session = require('../models/session')
+const jwt = require('jsonwebtoken')
 
 async function createAccessToken(userID, userName) {
   return jwt.sign(

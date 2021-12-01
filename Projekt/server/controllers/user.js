@@ -29,7 +29,9 @@ const login = asyncWrapper(async (req, res) => {
   const user = await findUser(email)
 
   if (!user) {
-    return res.json({ status: 'error', error: 'Invalid username/password' })
+    return res
+      .status(203)
+      .json({ status: 'error', error: 'Invalid username/password' })
   }
 
   if (await compareHash(password, user.password)) {
