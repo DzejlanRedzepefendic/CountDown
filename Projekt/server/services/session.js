@@ -1,10 +1,5 @@
 const Session = require('../models/session')
 
-// async function createSession(userID) {
-//   const session = await Session.create({ user: userID })
-//   return session
-// }
-
 async function createAccessToken(userID, userName) {
   return jwt.sign(
     { id: userID, name: userName },
