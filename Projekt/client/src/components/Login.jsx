@@ -9,11 +9,11 @@ export const Login = () => {
     await loginCheck(account)
   }
   return (
-    <div>
-      <div class='login-box'>
+    <div className='background'>
+      <div className='login-box'>
         <h2>LOGIN</h2>
         <form>
-          <div class='user-box'>
+          <div className='user-box'>
             <input
               type='email'
               value={account.email}
@@ -23,7 +23,7 @@ export const Login = () => {
             />
             <label htmlFor=''>Email</label>
           </div>
-          <div class='user-box'>
+          <div className='user-box'>
             <input
               type='password'
               value={account.password}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { register } from '../utils/axios/Auth'
-import '../styles/Register.css'
+// import '../styles/Register.css'
 const Register = () => {
   const [account, setAccount] = useState({
     name: '',
@@ -16,7 +16,7 @@ const Register = () => {
     console.log('ne radi')
   }
   return (
-    <div>
+    <div className='background'>
       <div className='register-box'>
         <h2>Register</h2>
         <form>

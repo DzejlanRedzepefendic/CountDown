@@ -1,7 +1,9 @@
 html {
   height: 100%;
 }
-body {
+.background {
+  height: 80vh;
+  width: 100vw;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -9,7 +11,7 @@ body {
 }
 .register-box {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   width: 400px;
   padding: 40px;
@@ -52,7 +54,7 @@ body {
 .register-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: #03e9f4;
+  color: white;
   font-size: 12px;
 }
 .register-box form a {
