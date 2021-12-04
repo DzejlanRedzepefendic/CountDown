@@ -1,44 +1,18 @@
 import React from 'react'
+import '../styles/Navbar.css'
 import getAllCountdowns from '../utils/axios/Countdown'
 const Navbar = () => {
   return (
     <div>
       <nav>
-        <div>
-          <div>
-            <a href='#'>CountDown</a>
-          </div>
-          <ul>
-            <li>
-              <a href='#'>Home</a>
-            </li>
-            <li>
-              <a href='#'>Page 1</a>
-            </li>
-            <li>
-              <a href='#'>Page 2</a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a href='#'>
-                <span></span> Sign Up
-              </a>
-            </li>
-            <li>
-              <a href='#'>
-                <span></span> Login
-              </a>
-            </li>
-            <button
-              onClick={() => {
-                getAllCountdowns()
-              }}
-            >
-              Click me
-            </button>
-          </ul>
-        </div>
+        <ul className='menu-bar'>
+          <li>CountDowns</li>
+          <li>Trending</li>
+          <li>Ending Soon</li>
+          <li>Create</li>
+          <li>Login</li>
+          <li>Register</li>
+        </ul>
       </nav>
     </div>
   )
