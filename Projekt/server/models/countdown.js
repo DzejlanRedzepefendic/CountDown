@@ -12,7 +12,7 @@ const countDownSchema = new Schema(
     created_at: { type: Date },
     air_date: {
       year: { type: Number },
-      month: { type: Number },
+      month: { type: String },
       day: { type: Number },
       hour: { type: Number },
       minutes: { type: Number },
