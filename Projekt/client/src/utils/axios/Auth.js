@@ -8,15 +8,25 @@ const config = {
 }
 
 export async function loginCheck(data) {
-  axios
-    .post('http://localhost:5000/api/login', data, config)
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error))
+  let response
+  try {
+    response = await axios.post('http://localhost:5000/api/login', data, config)
+    return response
+  } catch (error) {
+    return error
+  }
 }
 
 export async function register(data) {
-  axios
-    .post('http://localhost:5000/api/register', data, config)
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error))
+  let response
+  try {
+    response = await axios.post(
+      'http://localhost:5000/api/register',
+      data,
+      config
+    )
+    return response
+  } catch (error) {
+    return error
+  }
 }

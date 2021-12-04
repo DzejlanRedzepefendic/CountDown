@@ -7,10 +7,12 @@ const config = {
   },
 }
 
-async function getAllCountdowns() {
-  axios.get('http://localhost:5000/api/v1/countdown', config).then((res) => {
-    console.log(res.data.countdowns)
-  })
+export async function getAllCountdowns() {
+  let response
+  try {
+    response = await axios.get('http://localhost:5000/api/v1/countdown', config)
+    return response
+  } catch (error) {
+    return error
+  }
 }
-
-export default getAllCountdowns
