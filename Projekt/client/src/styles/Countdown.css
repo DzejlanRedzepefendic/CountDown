@@ -1,0 +1,20 @@
+.card {
+  width: 20vw;
+  height: 40vh;
+  opacity: '70%';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+}
+
+#title-text {
+  color: rgb(220, 219, 221);
+  padding: 10%;
+}
+
+.countdowns {
+  padding: 5%;
+  display: flex;
+  flex-wrap: wrap;
+}
