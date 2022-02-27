@@ -2,15 +2,19 @@ import React, { useEffect, useState, useContext } from 'react'
 import { getAllCountdowns } from '../utils/axios/Countdown'
 import '../styles/Countdown.css'
 import { makeCountdown } from '../utils/MakeCountdown'
+
 const Countdown = () => {
+
   const [countDowns, setCountDowns] = useState([])
   const [totalCD, setTotalCD] = useState(0)
+
   useEffect(async () => {
     const fetch = await getAllCountdowns()
     console.log(fetch)
     setCountDowns(fetch.data.countdowns)
     setTotalCD(fetch.data.countdowns.length)
   }, [])
+  
   return (
     <div>
       {!totalCD ? '' : <h1>Total countdowns in database:{totalCD}</h1>}

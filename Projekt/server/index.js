@@ -9,12 +9,14 @@ const notFound = require('./middlewares/not-found')
 const connectDB = require('./db/connect')
 const jwt = require('jsonwebtoken')
 const cors = require('cors')
+
 const corsOptions = {
   origin: 'http://localhost:3000',
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 }
 const app = express()
+
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/api/register', register)
@@ -27,10 +29,13 @@ app.use('/ping', (req, res) => {
 
 app.use(notFound)
 app.use(errorHandlerMiddleware)
+
 PORT = process.env.PORT
+DB = process.env.mongoURL
+
 const start = async () => {
   try {
-    await connectDB(process.env.mongoURL)
+    await connectDB(DB)
     app.listen(PORT, console.log(`Server is Listening on port ${PORT}`))
     console.log('Database Connected')
   } catch (error) {

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { loginCheck } from '../utils/axios/Auth'
+import { Auth } from '../utils/axios/Auth'
 import '../styles/Login.css'
+
 export const Login = () => {
   const [account, setAccount] = useState({ email: '', password: '' })
-  const checkAccount = async (e) => {
+  const checkAccount = (e) => {
     e.preventDefault()
-    console.log(account)
-    await loginCheck(account)
+    Auth(account,'login').then((r)=> console.log(r))
   }
   return (
     <div className='background'>

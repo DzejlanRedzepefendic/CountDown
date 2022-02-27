@@ -5,15 +5,21 @@ import Register from './components/Register'
 import NoMatchPage from './components/NoMatchPage'
 import Search from './components/Search'
 import Countdown from './components/Countdown'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 function App() {
   return (
     <>
+    <BrowserRouter>
       <Navbar />
       <Search />
-      {/* <Login /> */}
-      {/* <Register /> */}
-      {/* <NoMatchPage /> */}
-      <Countdown />
+        <Routes>
+          <Route path='/' element={<Countdown />} />
+          <Route path='/register' element={<Register/>} />
+          <Route path='/login' element={<Login/>} />
+          <Route path='*' element={<NoMatchPage />} />
+        </Routes>
+    </BrowserRouter>
     </>
   )
 }

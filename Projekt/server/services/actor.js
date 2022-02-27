@@ -6,6 +6,7 @@ const {
   findAndUpdate,
   findAndDelete,
 } = require('../utils/db/dbcrud')
+
 async function findAllActors() {
   return findAll(Actor)
 }

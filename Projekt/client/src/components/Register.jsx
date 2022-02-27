@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { register } from '../utils/axios/Auth'
-// import '../styles/Register.css'
+import {Auth} from '../utils/axios/Auth'
+import '../styles/Register.css'
+
 const Register = () => {
   const [account, setAccount] = useState({
     name: '',
@@ -8,12 +9,13 @@ const Register = () => {
     password: '',
   })
   const [password2, setPassword2] = useState('')
+  
   const checkAccount = async (e) => {
     e.preventDefault()
     if (account.password === password2) {
-      return await register(account)
+      return Auth(account, 'register').then((r)=> console.log(r))
     }
-    console.log('ne radi')
+    console.log('Invalid cresidentials')
   }
   return (
     <div className='background'>

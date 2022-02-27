@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import '../styles/404.css'
+import React from 'react'
+// import '../styles/404.css'
+
 const NoMatchPage = () => {
   return (
     <>
