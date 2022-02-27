@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import { Auth } from '../utils/axios/Auth'
 import '../styles/Login.css'
+import DecodeJwt from '../utils/DecodeJwt'
+
 
 export const Login = () => {
   const [account, setAccount] = useState({ email: '', password: '' })
   const checkAccount = (e) => {
     e.preventDefault()
-    Auth(account,'login').then((r)=> console.log(r))
+    Auth(account,'login').then((r)=> {
+      localStorage.setItem("token","Bearer " + r.data.token)
+    })
   }
+  // console.log(DecodeJwt())  
+  
   return (
     <div className='background'>
       <div className='login-box'>
@@ -33,7 +39,6 @@ export const Login = () => {
             />
             <label htmlFor=''>Password</label>
           </div>
-          {/* <button onClick={checkAccount}>submit</button> */}
           <div className='buttons-space'>
             <a to='#'>
               <span></span>

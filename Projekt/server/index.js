@@ -9,6 +9,7 @@ const notFound = require('./middlewares/not-found')
 const connectDB = require('./db/connect')
 const jwt = require('jsonwebtoken')
 const cors = require('cors')
+// const cookieParser = require('cookie-parser')
 
 const corsOptions = {
   origin: 'http://localhost:3000',
