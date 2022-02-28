@@ -4,15 +4,17 @@ import '../styles/Countdown.css'
 import { makeCountdown } from '../utils/MakeCountdown'
 
 const Countdown = () => {
-
   const [countDowns, setCountDowns] = useState([])
   const [totalCD, setTotalCD] = useState(0)
 
-  useEffect(async () => {
+  const fetchAndSetData =  async () => {
     const fetch = await getAllCountdowns()
-    console.log(fetch)
     setCountDowns(fetch.data.countdowns)
     setTotalCD(fetch.data.countdowns.length)
+  }
+
+  useEffect(() => {
+    fetchAndSetData()
   }, [])
   
   return (

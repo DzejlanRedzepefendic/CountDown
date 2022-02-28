@@ -1,9 +1,9 @@
 import jwt_decode from 'jwt-decode';
 
 
-const DecodeJwt = () => {
-    let token = localStorage.getItem("token");
-    return jwt_decode(token)
+const DecodeJwtFromlocalStorage = (token) => {
+    const {id, name } =jwt_decode(token)
+    return {id, name}
 }
 
-export default DecodeJwt
+export default DecodeJwtFromlocalStorage
