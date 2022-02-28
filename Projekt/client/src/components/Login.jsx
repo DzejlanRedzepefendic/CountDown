@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Auth } from "../utils/axios/Auth";
-import "../styles/Login.css";
 import { useSelector, useDispatch } from "react-redux";
 import { auth, setUserAndId } from "../redux/user/userSlice";
-import { useNavigate } from "react-router-dom";
 import DecodeJwtFromlocalStorage from "../utils/DecodeJwt";
+import { useNavigate } from "react-router-dom";
+import "../styles/Login.css";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [account, setAccount] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const user = useSelector((state) => state.user);
+  const [statusCode, setStatusCode] = useState(0)
 
   const setUpUser = () => {
     if (localStorage.getItem('token')) {
@@ -22,17 +23,21 @@ export const Login = () => {
     }
   };
   
-  const checkAccount = () => {
-    // e.preventDefault();
+  const checkAccount = (e) => {
+    e.preventDefault();
     Auth(account, "login").then((r) => {
+      setStatusCode(r.status)
       localStorage.setItem("token", "Bearer " + r.data.token);
     });
-    dispatch(auth(user.isLogged));
-    setUpUser()
-    navigate("/");
   };
 
   
+  useEffect(()=>{
+    if(statusCode === 200){
+      dispatch(auth(user.isLogged));
+      setUpUser()
+      navigate('/')}
+  },[statusCode])
 
   return (
     <div className="background">
@@ -72,7 +77,7 @@ export const Login = () => {
               <span></span>
               <span></span>
               <span></span>
-              <p>register</p>
+              <p onClick={() => navigate('/register')}>register</p>
             </a>
           </div>
         </form>

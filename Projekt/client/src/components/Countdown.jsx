@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getAllCountdowns } from '../utils/axios/Countdown'
 import '../styles/Countdown.css'
 import { makeCountdown } from '../utils/MakeCountdown'
+import Search from './Search'
 
 const Countdown = () => {
   const [countDowns, setCountDowns] = useState([])
@@ -19,6 +20,7 @@ const Countdown = () => {
   
   return (
     <div>
+      <Search />
       {!totalCD ? '' : <h1>Total countdowns in database:{totalCD}</h1>}
       <div className='countdowns'>
         {!countDowns ? (
@@ -50,6 +52,8 @@ const Countdown = () => {
         )}
       </div>
     </div>
+
+      
   )
 }
 

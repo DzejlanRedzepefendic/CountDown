@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Auth} from '../utils/axios/Auth'
 import '../styles/Register.css'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
   const [account, setAccount] = useState({
@@ -9,7 +10,8 @@ const Register = () => {
     password: '',
   })
   const [password2, setPassword2] = useState('')
-  
+  const navigate = useNavigate()
+
   const checkAccount = async (e) => {
     e.preventDefault()
     if (account.password === password2) {
@@ -71,7 +73,7 @@ const Register = () => {
               <span></span>
               <span></span>
               <span></span>
-              <p>login</p>
+              <p onClick={()=> navigate('/login')}>login</p>
             </a>
           </div>
         </form>
