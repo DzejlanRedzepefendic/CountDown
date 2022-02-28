@@ -11,33 +11,37 @@ export const Login = () => {
   const [account, setAccount] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const [statusCode, setStatusCode] = useState(0)
+  const [statusCode, setStatusCode] = useState(0);
 
   const setUpUser = () => {
-    if (localStorage.getItem('token')) {
-      try{
-      const { id, name } = DecodeJwtFromlocalStorage(localStorage.getItem("token"));
+    if (localStorage.getItem("token")) {
+      try {
+        const { id, name } = DecodeJwtFromlocalStorage(
+          localStorage.getItem("token")
+        );
 
-      dispatch(setUserAndId({ id, name }));
-      }catch(e){console.log(e)}
+        dispatch(setUserAndId({ id, name }));
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
-  
+
   const checkAccount = (e) => {
     e.preventDefault();
     Auth(account, "login").then((r) => {
-      setStatusCode(r.status)
+      setStatusCode(r.status);
       localStorage.setItem("token", "Bearer " + r.data.token);
     });
   };
 
-  
-  useEffect(()=>{
-    if(statusCode === 200){
+  useEffect(() => {
+    if (statusCode === 200) {
       dispatch(auth(user.isLogged));
-      setUpUser()
-      navigate('/')}
-  },[statusCode])
+      setUpUser();
+      navigate("/");
+    }
+  }, [statusCode]);
 
   return (
     <div className="background">
@@ -77,7 +81,7 @@ export const Login = () => {
               <span></span>
               <span></span>
               <span></span>
-              <p onClick={() => navigate('/register')}>register</p>
+              <p onClick={() => navigate("/register")}>register</p>
             </a>
           </div>
         </form>
