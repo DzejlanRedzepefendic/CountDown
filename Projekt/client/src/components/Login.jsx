@@ -13,23 +13,23 @@ export const Login = () => {
   const user = useSelector((state) => state.user);
 
   const setUpUser = () => {
-    if (localStorage.getItem("token")) {
-      const { id, name } = DecodeJwtFromlocalStorage(
-        localStorage.getItem("token")
-      );
+    if (localStorage.getItem('token')) {
+      try{
+      const { id, name } = DecodeJwtFromlocalStorage(localStorage.getItem("token"));
 
-      dispatch(auth(user.isLogged));
       dispatch(setUserAndId({ id, name }));
+      }catch(e){console.log(e)}
     }
   };
   
-  const checkAccount = (e) => {
-    e.preventDefault();
+  const checkAccount = () => {
+    // e.preventDefault();
     Auth(account, "login").then((r) => {
       localStorage.setItem("token", "Bearer " + r.data.token);
     });
-    navigate("/");
+    dispatch(auth(user.isLogged));
     setUpUser()
+    navigate("/");
   };
 
   

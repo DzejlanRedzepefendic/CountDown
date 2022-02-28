@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { auth } from "../redux/user/userSlice";
+import { auth,setUserAndId } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -10,6 +10,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [reRender, pleaseReRender] = useState(false)
+
 
   const logOut = () => {
     localStorage.removeItem("token");
@@ -34,17 +35,17 @@ const Navbar = () => {
           <Link to="/">
             <li>Create</li>
           </Link>
-          {!localStorage.getItem("token") && (
+          {!user.isLogged && (
             <Link to="/login">
               <li>Login</li>
             </Link>
           )}
-          {!localStorage.getItem("token") && (
+          {!user.isLogged && (
             <Link to="/register">
               <li>Register</li>
             </Link>
           )}
-          {localStorage.getItem("token") && <li onClick={logOut}>Logout</li>}
+          {user.isLogged && <li onClick={logOut}>Logout</li>}
         </ul>
       </nav>
     </div>
