@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,7 +6,6 @@ import { auth } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [reRender, pleaseReRender] = useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
