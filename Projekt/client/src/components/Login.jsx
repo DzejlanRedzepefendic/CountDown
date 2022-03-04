@@ -5,6 +5,7 @@ import { auth, setUserAndId } from "../redux/user/userSlice";
 import DecodeJwtFromlocalStorage from "../utils/DecodeJwt";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import { apiPaths } from '../utils/axios/apiPaths'
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export const Login = () => {
 
   const checkAccount = (e) => {
     e.preventDefault();
-    Auth(account, "login").then((r) => {
+    Auth(account, apiPaths.login).then((r) => {
       setStatusCode(r.status);
       localStorage.setItem("token", "Bearer " + r.data.token);
     });

@@ -6,10 +6,10 @@ import { auth } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const [reRender, pleaseReRender] = useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [reRender, pleaseReRender] = useState(false);
 
   const logOut = () => {
     localStorage.removeItem("token");

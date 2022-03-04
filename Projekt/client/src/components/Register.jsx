@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {Auth} from '../utils/axios/Auth'
 import '../styles/Register.css'
 import { useNavigate } from 'react-router-dom'
+import { apiPaths } from '../utils/axios/apiPaths'
 
 const Register = () => {
   const [account, setAccount] = useState({
@@ -15,7 +16,7 @@ const Register = () => {
   const checkAccount = async (e) => {
     e.preventDefault()
     if (account.password === password2) {
-      return Auth(account, 'register').then((r)=> console.log(r))
+      return Auth(account, apiPaths.register).then((r)=> console.log(r))
     }
     console.log('Invalid cresidentials')
   }

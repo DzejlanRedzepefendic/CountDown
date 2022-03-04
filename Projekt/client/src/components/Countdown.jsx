@@ -3,13 +3,14 @@ import { getAllCountdowns } from '../utils/axios/Countdown'
 import '../styles/Countdown.css'
 import { makeCountdown } from '../utils/MakeCountdown'
 import Search from './Search'
+import { apiPaths } from '../utils/axios/apiPaths'
 
 const Countdown = () => {
   const [countDowns, setCountDowns] = useState([])
   const [totalCD, setTotalCD] = useState(0)
 
   const fetchAndSetData =  async () => {
-    const fetch = await getAllCountdowns()
+    const fetch = await getAllCountdowns(apiPaths.countdown)
     setCountDowns(fetch.data.countdowns)
     setTotalCD(fetch.data.countdowns.length)
   }
