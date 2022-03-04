@@ -17,7 +17,7 @@ const register = asyncWrapper(async (req, res) => {
     await createUser(email, password, name);
   } catch (error) {
     if (error.code === 11000) {
-      return res.json({ status: "error", error: "Email already in use" });
+      return res.status(409).json({ status: "error", error: "Email already in use" });
     }
 
     throw error;
