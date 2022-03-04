@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Auth } from "../utils/axios/Auth";
 import { useNavigate } from "react-router-dom";
 import { apiPaths } from "../utils/axios/apiPaths";
@@ -11,19 +11,27 @@ const Register = () => {
     password: "",
     password2: "",
   });
+  const [statusCode, setStatusCode] = useState(0);
   const navigate = useNavigate();
 
   const checkAccount = (e) => {
     e.preventDefault();
     if (account.password === account.password2) {
-      Auth(account, apiPaths.register).then((r) => console.log(r));
-      navigate("/");
+      Auth(account, apiPaths.register).then((result) => {
+        setStatusCode(result.status);
+      });
     }
   };
 
   const onChangeInput = (e) => {
     setAccount({ ...account, [e.target.name]: e.target.value });
   };
+
+  useEffect(()=>{
+    if(statusCode === 200){
+      navigate('/login')
+    }
+  },[statusCode])
 
   return (
     <div className="background">
