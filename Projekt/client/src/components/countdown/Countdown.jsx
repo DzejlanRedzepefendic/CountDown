@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { getAllCountdowns } from '../../utils/axios/Countdown'
+import GetDataFromBackend from "../../utils/axios/GetDataFromBackend";
 import { makeCountdown } from '../../utils/MakeCountdown'
 import Search from '../layout/Search'
-import { apiPaths } from '../../utils/axios/apiPaths'
+import { apiPaths } from '../../utils/axios/ApiPaths'
+import { httpMethods } from '../../utils/axios/HttpMethods';
 import '../../styles/Countdown.css'
 
 const Countdown = () => {
@@ -10,7 +11,7 @@ const Countdown = () => {
   const [totalCD, setTotalCD] = useState(0)
 
   const fetchAndSetData =  async () => {
-    const fetch = await getAllCountdowns(apiPaths.countdown)
+    const fetch = await GetDataFromBackend(httpMethods.get)(apiPaths.countdown)
     setCountDowns(fetch.data.countdowns)
     setTotalCD(fetch.data.countdowns.length)
   }

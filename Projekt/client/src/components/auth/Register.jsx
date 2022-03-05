@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Auth } from "../../utils/axios/Auth";
+import GetDataFromBackend from "../../utils/axios/GetDataFromBackend";
 import { useNavigate } from "react-router-dom";
-import { apiPaths } from "../../utils/axios/apiPaths";
+import { apiPaths } from "../../utils/axios/ApiPaths";
+import { httpMethods } from "../../utils/axios/HttpMethods";
 import "../../styles/Register.css";
 
 const Register = () => {
@@ -17,7 +18,7 @@ const Register = () => {
   const checkAccount = (e) => {
     e.preventDefault();
     if (account.password === account.password2) {
-      Auth(account, apiPaths.register).then((result) => {
+      GetDataFromBackend(httpMethods.post)(apiPaths.register,account).then((result) => {
         setStatusCode(result.status);
       });
     }

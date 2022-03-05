@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { auth, setUserAndId } from "../../redux/user/userSlice"
-import { apiPaths } from '../../utils/axios/apiPaths'
-import { Auth } from "../../utils/axios/Auth";
+import { auth, setUserAndId } from "../../redux/user/userSlice";
+import { apiPaths } from "../../utils/axios/ApiPaths";
+import { httpMethods } from "../../utils/axios/HttpMethods";
+import GetDataFromBackend from "../../utils/axios/GetDataFromBackend";
 import DecodeJwtFromlocalStorage from "../../utils/DecodeJwt";
 import "../../styles/Login.css";
 
 export const Login = () => {
-  const navigate = useNavigate();
   const [account, setAccount] = useState({ email: "", password: "" });
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
   const [statusCode, setStatusCode] = useState(0);
+  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const setUpUser = () => {
     if (localStorage.getItem("token")) {
@@ -30,7 +31,8 @@ export const Login = () => {
 
   const checkAccount = (e) => {
     e.preventDefault();
-    Auth(account, apiPaths.login).then((r) => {
+
+    GetDataFromBackend(httpMethods.post)(apiPaths.login, account).then((r) => {
       setStatusCode(r.status);
       localStorage.setItem("token", "Bearer " + r.data.token);
     });
