@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { auth } from "../redux/user/userSlice";
+import { auth } from "../../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
-import "../styles/Navbar.css";
+import "../../styles/Navbar.css";
 
 const Navbar = () => {
   const user = useSelector((state) => state.user);

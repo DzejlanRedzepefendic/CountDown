@@ -1,11 +1,11 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Navbar from "./components/layout/Navbar";
+import Login from "../src/components/auth/Login";
+import Register from "../src/components/auth/Register";
 import NoMatchPage from "./components/NoMatchPage";
-import Countdown from "./components/Countdown";
+import Countdown from "./components/countdown/Countdown";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CreateCountDown from "./components/CreateCountDown";
+import CreateCountDown from "./components/countdown/CreateCountDown";
 
 function App() {
   return (

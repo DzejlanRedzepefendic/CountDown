@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Auth } from "../utils/axios/Auth";
+import { Auth } from "../../utils/axios/Auth";
 import { useNavigate } from "react-router-dom";
-import { apiPaths } from "../utils/axios/apiPaths";
-import "../styles/Register.css";
+import { apiPaths } from "../../utils/axios/apiPaths";
+import "../../styles/Register.css";
 
 const Register = () => {
   const [account, setAccount] = useState({
@@ -27,11 +27,11 @@ const Register = () => {
     setAccount({ ...account, [e.target.name]: e.target.value });
   };
 
-  useEffect(()=>{
-    if(statusCode === 200){
-      navigate('/login')
+  useEffect(() => {
+    if (statusCode === 200) {
+      navigate("/login");
     }
-  },[statusCode])
+  }, [statusCode]);
 
   return (
     <div className="background">

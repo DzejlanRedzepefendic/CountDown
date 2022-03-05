@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { getAllCountdowns } from '../utils/axios/Countdown'
-import '../styles/Countdown.css'
-import { makeCountdown } from '../utils/MakeCountdown'
-import Search from './Search'
-import { apiPaths } from '../utils/axios/apiPaths'
+import { getAllCountdowns } from '../../utils/axios/Countdown'
+import { makeCountdown } from '../../utils/MakeCountdown'
+import Search from '../layout/Search'
+import { apiPaths } from '../../utils/axios/apiPaths'
+import '../../styles/Countdown.css'
 
 const Countdown = () => {
   const [countDowns, setCountDowns] = useState([])

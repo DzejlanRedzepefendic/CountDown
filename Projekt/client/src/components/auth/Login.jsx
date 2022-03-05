@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Auth } from "../utils/axios/Auth";
 import { useSelector, useDispatch } from "react-redux";
-import { auth, setUserAndId } from "../redux/user/userSlice";
-import DecodeJwtFromlocalStorage from "../utils/DecodeJwt";
 import { useNavigate } from "react-router-dom";
-import "../styles/Login.css";
-import { apiPaths } from '../utils/axios/apiPaths'
+import { auth, setUserAndId } from "../../redux/user/userSlice"
+import { apiPaths } from '../../utils/axios/apiPaths'
+import { Auth } from "../../utils/axios/Auth";
+import DecodeJwtFromlocalStorage from "../../utils/DecodeJwt";
+import "../../styles/Login.css";
 
 export const Login = () => {
   const navigate = useNavigate();
