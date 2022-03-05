@@ -20,8 +20,9 @@ const app = express()
 
 app.use(cors(corsOptions))
 app.use(express.json())
-app.use('/api/register', register)
-app.use('/api/login', login)
+
+app.use('/api/v1/register', register)
+app.use('/api/v1/login', login)
 app.use('/api/v1/actor', actor)
 app.use('/api/v1/countdown', countdown)
 app.use('/ping', (req, res) => {
