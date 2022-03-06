@@ -1,12 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {userInitialState,stateName} from './userInitialState'
 
 export const userSlice = createSlice({
-  name: "user",
-  initialState: {
-    isLogged: false,
-    userName: "",
-    id: "",
-  },
+  name: stateName,
+  initialState: userInitialState,
   reducers: {
     auth: (state) => {
       state.isLogged = !state.isLogged;
