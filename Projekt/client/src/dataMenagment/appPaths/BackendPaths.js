@@ -1,4 +1,4 @@
-export const BackendPaths = {
+export const backendPaths = {
   login: "login",
   register: "register",
   actor: "actor",
