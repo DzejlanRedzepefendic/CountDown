@@ -2,6 +2,7 @@ nav {
   background: url('https://hdqwalls.com/download/stranger-things-season-3-2019-4k-5k-38-1920x1080.jpg')
     center/cover no-repeat;
   height: 20vh;
+  width: 100vw;
   margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
