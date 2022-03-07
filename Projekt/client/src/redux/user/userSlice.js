@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {userInitialState,stateName} from './userInitialState'
+import { userInitialState, stateName } from './userInitialState'
 
 export const userSlice = createSlice({
   name: stateName,
