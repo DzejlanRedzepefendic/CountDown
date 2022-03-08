@@ -5,16 +5,19 @@ export const userSlice = createSlice({
   name: stateName,
   initialState: userInitialState,
   reducers: {
-    auth: (state) => {
-      state.isLogged = !state.isLogged;
-    },
-    setUserAndId: (state, action) => {
+    auth: (state, action) => {
+      state.isLogged = true;
       state.userName = action.payload.name;
-      state.id = action.payload.id
+      state.id = action.payload.id;
+    },
+    logout: (state) => {
+      state.isLogged = false;
+      state.userName = "";
+      state.id = "";
     }
   },
 });
 
-export const { auth, setUserAndId } = userSlice.actions;
+export const { auth, logout } = userSlice.actions;
 
 export default userSlice.reducer;

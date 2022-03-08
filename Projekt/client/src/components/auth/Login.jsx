@@ -1,32 +1,25 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { auth, setUserAndId } from "../../redux/user/userSlice";
 import { fetchData } from "../../dataMenagment/axios/ApiMethod";
 import { backendPaths } from "../../dataMenagment/appPaths/BackendPaths";
-import DecodeJwtFromlocalStorage from "../../utils/DecodeJwt";
 import "../../styles/Login.css";
+import { useDispatch } from "react-redux";
+import { auth } from "../../redux/user/userSlice";
+import DecodeJwtFromlocalStorage from "../../utils/DecodeJwt";
 
 export const Login = () => {
   const [account, setAccount] = useState({ email: "", password: "" });
   const [statusCode, setStatusCode] = useState(0);
-  const user = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const setUpUser = useCallback(() => {
-    if (localStorage.getItem("token")) {
-      try {
-        const { id, name } = DecodeJwtFromlocalStorage(localStorage.getItem("token"));
-        dispatch(setUserAndId({ id, name }));
-      } catch (e) {
-        console.log(e);
-      }
-    }
+  const setReduxD = useCallback(() => {
+    const { id, name } = DecodeJwtFromlocalStorage(localStorage.getItem("token"));
+    dispatch(auth({ id, name }))
   }, [dispatch])
-
   const checkAccount = (e) => {
     e.preventDefault();
+
 
     fetchData.post(backendPaths.login, account).then(({ status, data }) => {
       setStatusCode(status);
@@ -37,11 +30,10 @@ export const Login = () => {
 
   useEffect(() => {
     if (statusCode === 200) {
-      dispatch(auth(user.isLogged));
-      setUpUser();
+      setReduxD()
       navigate("/");
     }
-  }, [statusCode, dispatch, navigate, setUpUser, user.isLogged]);
+  }, [statusCode, navigate, setReduxD]);
   return (
     <div className="background">
       <div className="login-box">

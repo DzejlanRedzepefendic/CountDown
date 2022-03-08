@@ -6,8 +6,28 @@ import Countdown from "./components/countdown/CountDowns";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CreateCountDown from "./components/countdown/CreateCountDown";
 import Footer from "./components/layout/Footer";
+import { useCallback, useEffect } from "react";
+import DecodeJwtFromlocalStorage from "./utils/DecodeJwt";
+import { useDispatch, useSelector } from "react-redux";
+import { auth, logout } from "./redux/user/userSlice";
 
 function App() {
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
+
+  const setDataIntoRedux = useCallback(() => {
+    if (localStorage.getItem("token")) {
+      const { id, name } = DecodeJwtFromlocalStorage(localStorage.getItem("token"));
+      dispatch(auth({ id, name }))
+    } else {
+      dispatch(logout())
+    }
+  }, [dispatch])
+
+  useEffect(() => {
+    if (!user.isLogged) setDataIntoRedux()
+  }, [user.isLogged, setDataIntoRedux])
+
   return (
     <>
       <BrowserRouter>

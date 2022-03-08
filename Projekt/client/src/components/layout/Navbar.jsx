@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { auth } from "../../redux/user/userSlice";
+import { logout } from "../../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 import "../../styles/Navbar.css";
 
@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const logOut = () => {
     localStorage.removeItem("token");
-    dispatch(auth(user.isLogged));
+    dispatch(logout());
     return navigate("/login");
   };
 

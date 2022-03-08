@@ -17,9 +17,11 @@ const CountDown = ({ countdown }) => {
             }}
           >
           </div>
-          <span style={{ color: 'black', letterSpacing: '2px', fontSize: '23px' }}>
-            {makeCountdown(value.air_date.year, value.air_date.month, value.air_date.day, value.air_date.hour, value.air_date.minutes)}
-          </span>
+          <div style={{ textAlign: 'center' }}>
+            <span style={{ color: 'black', letterSpacing: '2px', fontSize: '23px' }}>
+              {makeCountdown(value.air_date.year, value.air_date.month, value.air_date.day, value.air_date.hour, value.air_date.minutes)}
+            </span>
+          </div>
         </div>
       </div>
     );
