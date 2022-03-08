@@ -8,9 +8,9 @@ function ApiMethod(method) {
 }
 
 export const fetchData = {
-  GetMethod: ApiMethod(httpMethods.get),
-  PostMethod: ApiMethod(httpMethods.post),
-  PutMethod: ApiMethod(httpMethods.put),
-  PatchMethod: ApiMethod(httpMethods.patch),
-  DeleteMethod: ApiMethod(httpMethods.delete),
+  get: ApiMethod(httpMethods.get),
+  post: ApiMethod(httpMethods.post),
+  put: ApiMethod(httpMethods.put),
+  patch: ApiMethod(httpMethods.patch),
+  delete: ApiMethod(httpMethods.delete),
 };

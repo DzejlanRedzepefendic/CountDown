@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth, setUserAndId } from "../../redux/user/userSlice";
@@ -14,28 +14,26 @@ export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const setUpUser = () => {
+  const setUpUser = useCallback(() => {
     if (localStorage.getItem("token")) {
       try {
-        const { id, name } = DecodeJwtFromlocalStorage(
-          localStorage.getItem("token")
-        );
-
+        const { id, name } = DecodeJwtFromlocalStorage(localStorage.getItem("token"));
         dispatch(setUserAndId({ id, name }));
       } catch (e) {
         console.log(e);
       }
     }
-  };
+  }, [dispatch])
 
   const checkAccount = (e) => {
     e.preventDefault();
 
-    fetchData.PostMethod(backendPaths.login, account).then((r) => {
-      setStatusCode(r.status);
-      localStorage.setItem("token", "Bearer " + r.data.token);
+    fetchData.post(backendPaths.login, account).then(({ status, data }) => {
+      setStatusCode(status);
+      localStorage.setItem("token", "Bearer " + data.token);
     });
   };
+
 
   useEffect(() => {
     if (statusCode === 200) {
@@ -43,8 +41,7 @@ export const Login = () => {
       setUpUser();
       navigate("/");
     }
-  }, [statusCode]);
-
+  }, [statusCode, dispatch, navigate, setUpUser, user.isLogged]);
   return (
     <div className="background">
       <div className="login-box">

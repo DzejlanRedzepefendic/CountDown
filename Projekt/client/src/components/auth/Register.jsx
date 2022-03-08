@@ -17,7 +17,7 @@ const Register = () => {
   const checkAccount = (e) => {
     e.preventDefault();
     if (account.password === account.password2) {
-      fetchData.PostMethod(backendPaths.register,account).then((result) => {
+      fetchData.PostMethod(backendPaths.register, account).then((result) => {
         setStatusCode(result.status);
       });
     }
@@ -31,7 +31,7 @@ const Register = () => {
     if (statusCode === 200) {
       navigate("/login");
     }
-  }, [statusCode]);
+  }, [statusCode, navigate]);
 
   return (
     <div className="background">
