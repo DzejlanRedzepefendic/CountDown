@@ -1,9 +1,10 @@
-.form-wrapper{
+.form-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.form-wrapper2{
+
+.form-wrapper2 {
     width: 50%;
     margin: 3%;
 }

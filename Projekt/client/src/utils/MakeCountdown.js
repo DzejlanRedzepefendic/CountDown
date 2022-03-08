@@ -1,6 +1,6 @@
-export const makeCountdown = (year, month, day, hour, minutes) => {
+export const makeCountdown = (year, month, day, hour, min) => {
   var countDownDate = new Date(
-    `${month} ${day}, ${year} ${hour}:${minutes}:00`
+    `${month} ${day}, ${year} ${hour}:${min}:00`
   ).getTime();
 
   var now = new Date().getTime();
@@ -9,5 +9,5 @@ export const makeCountdown = (year, month, day, hour, minutes) => {
   var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
-  return [days, hours, minutes, seconds];
+  return `${days}Days  ${hours}Hours  ${minutes}Minutes   ${seconds}Seconds`;
 };

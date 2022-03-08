@@ -27,7 +27,7 @@ const CreateCountDown = () => {
             <Form.Control as="textarea" style={{ height: '12vh' }} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formNumber">
-            <Form.Label>IMDB Score:</Form.Label>
+            <Form.Label>Youtube Url:</Form.Label>
             <Form.Control type="number" step="0.1" />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formDate">

@@ -1,16 +1,21 @@
 .card {
   width: 20vw;
-  height: 40vh;
+  height: 50vh;
   opacity: '70%';
+}
+
+.card-wrap {
+  width: 20%;
+  height: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5%;
 }
 
-#title-text {
-  color: rgb(220, 219, 221);
-  padding: 10%;
+.title-text {
+  color: rgb(16, 16, 17);
+  padding: 13%;
 }
 
 .countdowns {

@@ -2,26 +2,27 @@ import React from "react";
 import { makeCountdown } from "../../utils/MakeCountdown";
 
 const CountDown = ({ countdown }) => {
+
   return countdown.map((value) => {
     return (
-      <div
-        key={value._id}
-        id={value._id}
-        className="card"
-        style={{
-          backgroundImage: `url(${value.url})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-        }}
-      >
-        <h1 id="title-text">{value.title}</h1>
-        {makeCountdown(
-          value.air_date.year,
-          value.air_date.month,
-          value.air_date.day,
-          value.air_date.hour,
-          value.air_date.minutes
-        )}
+      <div className="card-wrap">
+        <div>
+          <h1 className="title-text" style={{ paddingTop: '15%' }} >{value.title}</h1>
+          <div
+            key={value._id}
+            id={value._id}
+            className="card"
+            style={{
+              backgroundImage: `url(${value.url})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+            }}
+          >
+          </div>
+          <span style={{ color: 'black', letterSpacing: '2px', fontSize: '23px' }}>
+            {makeCountdown(value.air_date.year, value.air_date.month, value.air_date.day, value.air_date.hour, value.air_date.minutes)}
+          </span>
+        </div>
       </div>
     );
   });
