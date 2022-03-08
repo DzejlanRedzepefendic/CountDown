@@ -1,20 +1,30 @@
 import React from "react";
 import "../../styles/Footer.css";
-
+import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <footer>
-      <section class="footer-base">
-        <div class="footer-legal">
-          <div class="footer-legal-copyright">
+      <section className="footer-base">
+        <div className="footer-legal">
+          <div className="footer-legal-copyright">
             Copyright © 2022 Vendor. All rights reserved.
           </div>
-          <div class="footer-legal-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Sales and Refunds</a>
-            <a href="#">Legal</a>
-            <a href="#">Site Map</a>
+          <div className="footer-legal-links">
+            <Link className="footer-routes" to="/not-found">
+              Privacy Policy
+            </Link>
+            <Link className="footer-routes" to="/not-found">
+              Terms of Use
+            </Link>
+            <Link className="footer-routes" to="/not-found">
+              Sales and Refunds
+            </Link>
+            <Link className="footer-routes" to="/not-found">
+              Legal
+            </Link>
+            <Link className="footer-routes" to="/not-found">
+              Site Map
+            </Link>
           </div>
         </div>
       </section>

@@ -75,25 +75,23 @@ const Register = () => {
             <label htmlFor="">Re-enter password</label>
           </div>
           <div className="buttons-space">
-            <a to="#">
+            <div className="box">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               <p onClick={checkAccount}>Submit</p>
-            </a>
-            <a to="#">
+            </div>
+            <div className="box">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               <p onClick={() => navigate("/login")}>login</p>
-            </a>
+            </div>
           </div>
         </form>
-        <a to="#">
-          <p>Already have an account?</p>
-        </a>
+        <p style={{ paddingTop: '5%' }}>Don't have account?</p>
       </div>
     </div>
   );

@@ -55,7 +55,7 @@ export const Login = () => {
                 setAccount({ ...account, email: e.target.value })
               }
             />
-            <label htmlFor="">Email</label>
+            <label htmlFor="email">Email</label>
           </div>
           <div className="user-box">
             <input
@@ -65,30 +65,28 @@ export const Login = () => {
                 setAccount({ ...account, password: e.target.value })
               }
             />
-            <label htmlFor="">Password</label>
+            <label htmlFor="password">Password</label>
           </div>
           <div className="buttons-space">
-            <a to="#">
+            <div className="box">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               <p onClick={checkAccount}>Submit</p>
-            </a>
-            <a to="#">
+            </div>
+            <div className="box">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               <p onClick={() => navigate("/register")}>register</p>
-            </a>
+            </div>
           </div>
         </form>
-        <a to="#">
-          <p>Don't have account?</p>
-        </a>
-      </div>
-    </div>
+        <p style={{ paddingTop: '5%' }}>Don't have account?</p>
+      </div >
+    </div >
   );
 };
 

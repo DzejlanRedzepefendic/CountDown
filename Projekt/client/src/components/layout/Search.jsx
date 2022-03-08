@@ -12,9 +12,9 @@ const Search = () => {
             placeholder='Search...'
             className='search-input'
           />
-          <a href='#' className='search-btn'>
+          <span className='search-btn'>
             <i className='fas fa-search'></i>
-          </a>
+          </span>
         </div>
       </div>
     </div>
