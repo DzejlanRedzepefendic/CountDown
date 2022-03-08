@@ -48,7 +48,7 @@
   perspective: 1200px;
 }
 
-.anc {
+.home-button {
   text-transform: uppercase;
   text-decoration: none;
   background: var(--button);

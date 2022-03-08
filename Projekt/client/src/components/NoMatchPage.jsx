@@ -20,7 +20,7 @@ const NoMatchPage = () => {
             missing. We do apologise on it's behalf.
           </p>
           <Link to="/">
-            <a className="anc">Home</a>
+            <button className="home-button">Home</button>
           </Link>
         </div>
       </div>
