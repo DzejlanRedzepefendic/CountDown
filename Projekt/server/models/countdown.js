@@ -8,7 +8,6 @@ const countDownSchema = new Schema(
     genre: { type: Array },
     about: { type: String },
     youtubeURL: { type: String },
-    imdb_score: { type: Number },
     created_at: { type: Date },
     air_date: {
       year: { type: Number },
