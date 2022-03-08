@@ -5,12 +5,10 @@ const CountDown = ({ countdown }) => {
 
   return countdown.map((value) => {
     return (
-      <div className="card-wrap">
+      <div className="card-wrap" key={value._id} id={value._id}>
         <div>
           <h1 className="title-text" style={{ paddingTop: '15%' }} >{value.title}</h1>
           <div
-            key={value._id}
-            id={value._id}
             className="card"
             style={{
               backgroundImage: `url(${value.url})`,
