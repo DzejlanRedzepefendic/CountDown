@@ -28,7 +28,7 @@ const CreateCountDown = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formNumber">
             <Form.Label>Youtube Url:</Form.Label>
-            <Form.Control type="number" step="0.1" />
+            <Form.Control type="string" />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formDate">
             <Form.Label>Air Date:</Form.Label>
