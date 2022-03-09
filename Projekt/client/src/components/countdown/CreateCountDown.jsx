@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { Row, Col } from 'react-bootstrap'
@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/CreateCountDown.css'
 
 const CreateCountDown = () => {
+  const [genres,] = useState(["Action", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Romance", "Thriller", "Western"])
+
   return (
     <div className="form-wrapper">
       <div className="form-wrapper2">
@@ -18,10 +20,10 @@ const CreateCountDown = () => {
             <Form.Label>Url of image:</Form.Label>
             <Form.Control type="text" />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formText3">
-            <Form.Label>Genre:</Form.Label>
-            <Form.Control type="text" />
-          </Form.Group>
+          <Form.Select aria-label="Default select example">
+            {genres.map((value, index) => <option id={index}>{value}</option>)}
+          </Form.Select>
+          <Button style={{ marginTop: '2%', marginBottom: '7%' }} variant="secondary">Add</Button>
           <Form.Group className="mb-3" controlId="formTextarea">
             <Form.Label>About the movie:</Form.Label>
             <Form.Control as="textarea" style={{ height: '12vh' }} />

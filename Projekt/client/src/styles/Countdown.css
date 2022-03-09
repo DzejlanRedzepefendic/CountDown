@@ -1,25 +1,73 @@
-.card {
-  width: 20vw;
-  height: 50vh;
-  opacity: '70%';
+.countdowns {
+  padding: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card-wrap {
   width: 20%;
-  height: 40%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5%;
+  margin: 2%;
 }
 
+.card {
+  display: flex;
+  width: 350px;
+  height: 450px;
+}
+
+.card-wrap:hover{
+  width:22%;
+}
+
+.card:hover{
+  height: 470px;
+  width: 100%;
+  box-shadow: 10px 10px 8px 10px #888888;
+}
+
+.card:hover .countdown-time{
+  font-size:40px;
+}
+
+.card:hover .countdown-label{
+  font-size:22px;
+}
+
+  /* Countdown title */
 .title-text {
   color: rgb(16, 16, 17);
   padding: 13%;
 }
 
-.countdowns {
-  padding: 5%;
-  display: flex;
-  flex-wrap: wrap;
+  /* Time only  */
+#time-wrap{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  position:relative;
+  top:150px;
+  
 }
+
+#time-wrap > div{
+  display:flex;
+  flex-direction: column;
+  width:25%;
+  color: white;
+  font-size: 23px;
+}
+
+.countdown-label{
+  font-size: 15px;
+}
+
+.countdown-time{
+  font-size: 33px;
+  font-weight: bold;
+}
+
