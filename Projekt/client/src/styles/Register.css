@@ -72,6 +72,10 @@ html {
   letter-spacing: 4px;
 }
 
+.box > p:hover{
+  cursor: pointer;
+}
+
 .register-box .box:hover {
   background: #03e9f4;
   color: #fff;
