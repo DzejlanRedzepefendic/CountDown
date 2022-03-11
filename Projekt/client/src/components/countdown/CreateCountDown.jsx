@@ -29,12 +29,21 @@ const CreateCountDown = () => {
 
   const getGenre = () => {
     if (genre.length < 1) return
-
     setSelectedOptions([...selectedOptions, optionValue])
+
     let filteredgenre = genre.filter((value) => value !== optionValue)
     setGenre(filteredgenre);
-    setOptionValue(filteredgenre[0])
   }
+
+  const removeFilteredGenre = (removedItem) => {
+    setGenre([...genre, removedItem].sort())
+    let filterSelectedGenres = selectedOptions.filter((value) => value !== removedItem)
+    setSelectedOptions(filterSelectedGenres);
+  }
+
+  useEffect(() => {
+    setOptionValue(genre[0])
+  }, [genre])
 
   const handleOnChange = (setter) => {
     return (e) => {
@@ -50,6 +59,7 @@ const CreateCountDown = () => {
   useEffect(() => {
     if (airDate) parseDateAndSetAirDate()
   }, [airDate, parseDateAndSetAirDate, hour, minutes])
+
 
   // TODO form validation
   const handleOnSubmit = () => {
@@ -72,7 +82,7 @@ const CreateCountDown = () => {
             <Form.Label>Url of image:</Form.Label>
             <Form.Control value={url} onChange={handleOnChange(setUrl)} type="text" />
           </Form.Group>
-          {selectedOptions && selectedOptions.map((value) => <li>{value}</li>)}
+          {selectedOptions && selectedOptions.map((value) => { return <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '1%' }}><li style={{ width: '8%', listStyle: 'none' }}>{value}</li> <Button variant='btn-close' style={{ padding: '0' }} onClick={() => { removeFilteredGenre(value) }}>x</Button></div> })}
           <Form.Select value={optionValue} onChange={(e) => { setOptionValue(e.target.value) }} aria-label="Default select example">
             {genre.map((value, index) => <option id={index} key={index}>{value}</option>)}
           </Form.Select>
