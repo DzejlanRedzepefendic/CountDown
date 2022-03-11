@@ -20,25 +20,33 @@
   height: 450px;
 }
 
+
+@media screen and (max-width:1300px){
+  .card {
+    width:40vw;
+  }
+  .card-wrap{
+    width:40vw;
+    margin-bottom: 10%;
+  }
+}
+@media screen and (max-width:600px){
+  .card {
+    width:80vw;
+  }
+  .card-wrap{
+    width:80vw;
+    margin-bottom: 10%;
+  }
+}
 .card > h1{
   font-size: 20px;
   height:20%;
 }
 
-.card-wrap:hover{
-  width:22%;
-}
 
 .card:hover{
   box-shadow: 5px 5px 4px 5px #888888;
-}
-
-.card:hover .countdown-time{
-  font-size:40px;
-}
-
-.card:hover .countdown-label{
-  font-size:22px;
 }
 
   /* Countdown title */

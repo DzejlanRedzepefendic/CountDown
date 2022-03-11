@@ -11,7 +11,7 @@ html {
 }
 .login-box {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   width: 400px;
   padding: 40px;
@@ -255,4 +255,12 @@ p {
 .buttons-space {
   display: flex;
   justify-content: space-around;
+}
+
+
+@media screen and (max-width:960px){
+  .login-box{
+    width:80vw;
+    top:50%;
+  }
 }

@@ -8,3 +8,9 @@
     width: 50%;
     margin: 3%;
 }
+
+@media screen and (max-width:780px){
+    .btn-x{
+        margin-left: 50px;
+    }
+}
