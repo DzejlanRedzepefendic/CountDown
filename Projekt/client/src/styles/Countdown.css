@@ -30,9 +30,7 @@
 }
 
 .card:hover{
-  height: 470px;
-  width: 100%;
-  box-shadow: 10px 10px 8px 10px #888888;
+  box-shadow: 5px 5px 4px 5px #888888;
 }
 
 .card:hover .countdown-time{

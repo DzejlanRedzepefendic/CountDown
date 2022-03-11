@@ -7,7 +7,7 @@ import '../../styles/CreateCountDown.css'
 import { fetchData } from "../../dataMenagment/axios/ApiMethod";
 import { backendPaths } from "../../dataMenagment/appPaths/BackendPaths";
 import { makeAir_Date } from '../../utils/makeAirDate'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const CreateCountDown = () => {
   /* * genre *  */
@@ -24,6 +24,9 @@ const CreateCountDown = () => {
   const [minutes, setMinutes] = useState(0);
   const [air_date, setAir_date] = useState({});
 
+  const navigate = useNavigate()
+  const [statusCode, setStatusCode] = useState(0)
+
   const getGenre = () => {
     if (genre.length < 1) return
 
@@ -38,6 +41,7 @@ const CreateCountDown = () => {
       setter(e.target.value)
     }
   }
+
   const parseDateAndSetAirDate = useCallback(() => {
     const parsedDate = makeAir_Date(airDate)
     setAir_date({ year: parsedDate.year, month: parsedDate.month, day: parsedDate.day, hour, minutes })
@@ -48,11 +52,13 @@ const CreateCountDown = () => {
   }, [airDate, parseDateAndSetAirDate, hour, minutes])
 
   // TODO form validation
-  const handleOnSubmit = async (e) => {
-    e.preventDefault();
-    fetchData.post(backendPaths.countdown, { title, url, genre: selectedOptions, about, youtubeURL, air_date })
+  const handleOnSubmit = () => {
+    fetchData.post(backendPaths.countdown, { title, url, genre: selectedOptions, about, youtubeURL, air_date }).then(result => setStatusCode(result.status))
   }
 
+  useEffect(() => {
+    if (statusCode === 201) navigate('/')
+  }, [statusCode, navigate])
 
   return (
     <div className="form-wrapper">
@@ -100,6 +106,6 @@ const CreateCountDown = () => {
       </div>
     </div >
   );
-};
+}
 
 export default CreateCountDown;
