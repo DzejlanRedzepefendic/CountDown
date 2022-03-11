@@ -63,6 +63,7 @@ const CreateCountDown = () => {
 
   // TODO form validation
   const handleOnSubmit = () => {
+    if (!air_date || !youtubeURL || !about || !url || !title || !selectedOptions) { return }
     fetchData.post(backendPaths.countdown, { title, url, genre: selectedOptions, about, youtubeURL, air_date }).then(result => setStatusCode(result.status))
   }
 
@@ -82,7 +83,7 @@ const CreateCountDown = () => {
             <Form.Label>Url of image:</Form.Label>
             <Form.Control value={url} onChange={handleOnChange(setUrl)} type="text" />
           </Form.Group>
-          {selectedOptions && selectedOptions.map((value) => { return <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '1%' }}><li style={{ width: '8%', listStyle: 'none' }}>{value}</li> <Button variant='btn-close' style={{ padding: '0' }} onClick={() => { removeFilteredGenre(value) }}>x</Button></div> })}
+          {selectedOptions && selectedOptions.map((value) => { return <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '1%' }}><li style={{ width: '8%', listStyle: 'none' }}>{value}</li> <Button variant='btn-close' className="btn-x" style={{ padding: '0' }} onClick={() => { removeFilteredGenre(value) }}>x</Button></div> })}
           <Form.Select value={optionValue} onChange={(e) => { setOptionValue(e.target.value) }} aria-label="Default select example">
             {genre.map((value, index) => <option id={index} key={index}>{value}</option>)}
           </Form.Select>
